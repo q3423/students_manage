@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lm.manage.dao.StudentMapper" >
+  <resultMap id="BaseResultMap" type="com.lm.manage.domain.Student" >
+    <id column="student_id" property="studentId" jdbcType="BIGINT" />
+    <result column="gender" property="gender" jdbcType="VARCHAR" />
+    <result column="student_age" property="studentAge" jdbcType="INTEGER" />
+    <result column="student_name" property="studentName" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    student_id, gender, student_age, student_name
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from student
+    where student_id = #{studentId,jdbcType=BIGINT}
+  </select>
+  <select id="selectAll" resultType="com.lm.manage.domain.Student">
+    select <include refid="Base_Column_List" />
+    from student
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from student
+    where student_id = #{studentId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.lm.manage.domain.Student" >
+    insert into student (student_id, gender, student_age, 
+      student_name)
+    values (#{studentId,jdbcType=BIGINT}, #{gender,jdbcType=VARCHAR}, #{studentAge,jdbcType=INTEGER}, 
+      #{studentName,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.lm.manage.domain.Student" >
+    insert into student
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="studentId != null" >
+        student_id,
+      </if>
+      <if test="gender != null" >
+        gender,
+      </if>
+      <if test="studentAge != null" >
+        student_age,
+      </if>
+      <if test="studentName != null" >
+        student_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="studentId != null" >
+        #{studentId,jdbcType=BIGINT},
+      </if>
+      <if test="gender != null" >
+        #{gender,jdbcType=VARCHAR},
+      </if>
+      <if test="studentAge != null" >
+        #{studentAge,jdbcType=INTEGER},
+      </if>
+      <if test="studentName != null" >
+        #{studentName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.lm.manage.domain.Student" >
+    update student
+    <set >
+      <if test="gender != null" >
+        gender = #{gender,jdbcType=VARCHAR},
+      </if>
+      <if test="studentAge != null" >
+        student_age = #{studentAge,jdbcType=INTEGER},
+      </if>
+      <if test="studentName != null" >
+        student_name = #{studentName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where student_id = #{studentId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.lm.manage.domain.Student" >
+    update student
+    set gender = #{gender,jdbcType=VARCHAR},
+      student_age = #{studentAge,jdbcType=INTEGER},
+      student_name = #{studentName,jdbcType=VARCHAR}
+    where student_id = #{studentId,jdbcType=BIGINT}
+  </update>
+</mapper>
