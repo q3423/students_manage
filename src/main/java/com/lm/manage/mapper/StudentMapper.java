@@ -1,4 +1,4 @@
-package com.lm.manage.dao;
+package com.lm.manage.mapper;
 
 
 import com.lm.manage.domain.Student;

@@ -6,6 +6,12 @@ spring:
     username: root
     password: 123456
     driver-class-name: com.mysql.jdbc.Driver
+    platform: mysql
+  jpa:
+    show-sql: true
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/lmm
 mybatis:
   mapper-locations: classpath:mapping/*.xml
   type-aliases-package: com.lm.manage.domain

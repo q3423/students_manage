@@ -5,7 +5,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-@MapperScan("com.lm.manage.dao")
+@MapperScan("com.lm.manage.mapper")
 public class StudentsManageApplication {
 
 	public static void main(String[] args) {

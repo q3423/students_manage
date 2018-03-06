@@ -1,6 +1,6 @@
 package com.lm.manage.service.impl;
 
-import com.lm.manage.dao.StudentMapper;
+import com.lm.manage.mapper.StudentMapper;
 import com.lm.manage.domain.Student;
 import com.lm.manage.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
