@@ -30,8 +30,9 @@ public class StudentServiceImpl implements StudentService{
     }
 
     @Override
-    public int insertSelective(Student record) {
-        return studentMapper.insertSelective(record);
+    public Long insertSelective(Student record) {
+        studentMapper.insertSelective(record);
+        return record.getStudentId();
     }
 
     @Override

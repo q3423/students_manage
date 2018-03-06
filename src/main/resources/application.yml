@@ -11,3 +11,4 @@ mybatis:
   type-aliases-package: com.lm.manage.domain
   configuration:
     map-underscore-to-camel-case: true
+    use-generated-keys: true

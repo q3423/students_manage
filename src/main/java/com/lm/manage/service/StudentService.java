@@ -15,7 +15,7 @@ public interface StudentService {
 
     int insert(Student record);
 
-    int insertSelective(Student record);
+    Long insertSelective(Student record);
 
     Student selectByPrimaryKey(Long studentId);
 

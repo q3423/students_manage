@@ -26,8 +26,8 @@ public class StudentController {
         return studentService.selectByPrimaryKey(id);
     }
     @PostMapping("/students")
-    public Integer addStudent(@ModelAttribute Student student){
-        return studentService.updateByPrimaryKeySelective(student);
+    public Long addStudent(@ModelAttribute Student student){
+        return studentService.insertSelective(student);
     }
     @DeleteMapping("/students/{id}")
     public String deleteStudent(@PathVariable("id") Long id){

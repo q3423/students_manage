@@ -24,18 +24,15 @@
     delete from student
     where student_id = #{studentId,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="com.lm.manage.domain.Student" >
-    insert into student (student_id, gender, student_age, 
+  <insert id="insert" parameterType="com.lm.manage.domain.Student" useGeneratedKeys="true" keyColumn="student_id" keyProperty="studentId">
+    insert into student (gender, student_age,
       student_name)
-    values (#{studentId,jdbcType=BIGINT}, #{gender,jdbcType=VARCHAR}, #{studentAge,jdbcType=INTEGER}, 
+    values ( #{gender,jdbcType=VARCHAR}, #{studentAge,jdbcType=INTEGER},
       #{studentName,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.lm.manage.domain.Student" >
+  <insert id="insertSelective" parameterType="com.lm.manage.domain.Student" useGeneratedKeys="true" keyColumn="student_id" keyProperty="studentId">
     insert into student
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="studentId != null" >
-        student_id,
-      </if>
       <if test="gender != null" >
         gender,
       </if>
@@ -47,9 +44,6 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="studentId != null" >
-        #{studentId,jdbcType=BIGINT},
-      </if>
       <if test="gender != null" >
         #{gender,jdbcType=VARCHAR},
       </if>
